@@ -1,0 +1,27 @@
+{
+    "filename": "sample_admit_card.pdf",
+    "page_count": 2,
+    "metadata": {
+        "format": "PDF 1.4",
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": "",
+        "creator": "",
+        "producer": "pypdf",
+        "creationDate": "",
+        "modDate": "",
+        "trapped": "",
+        "encryption": null
+    },
+    "pages": [
+        {
+            "page_number": 1,
+            "text": "NPTEL EXAM – 25 October, 2026 SEM2NOC26: CS136 The Joy of Computing using Python Aman Sinha NOC26CS136S1161300025 25 02-02-2006 No 0 No Sunday, 25 October, 2026 Indraprastha Public School A-3, Rajeev Nagar, Begumpur opp. Rohini Sec-22, New Delhi, Delhi, India, 110086"
+        },
+        {
+            "page_number": 2,
+            "text": ""
+        }
+    ]
+}
