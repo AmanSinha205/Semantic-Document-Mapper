@@ -13,7 +13,7 @@ class SemanticSearch:
         self,
         query: str,
         chunks: list[Chunk],
-        top_k: int = 3,
+        top_k: int = 3
     ) -> list[Chunk]:
 
         query_embedding = np.array(
@@ -28,7 +28,8 @@ class SemanticSearch:
 
             similarity = (
                 np.dot(query_embedding, chunk_embedding)
-                / (
+                /
+                (
                     np.linalg.norm(query_embedding)
                     * np.linalg.norm(chunk_embedding)
                 )
@@ -36,6 +37,9 @@ class SemanticSearch:
 
             scores.append((similarity, chunk))
 
-        scores.sort(reverse=True, key=lambda x: x[0])
+        scores.sort(
+            reverse=True,
+            key=lambda x: x[0]
+        )
 
         return [chunk for _, chunk in scores[:top_k]]
