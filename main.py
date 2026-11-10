@@ -3,6 +3,7 @@ from dataclasses import asdict
 
 from backend.pipeline.document_pipeline import DocumentPipeline
 from backend.search.semantic_search import SemanticSearch
+from backend.vector_store.faiss_store import FAISSStore
 
 
 def main():
@@ -11,19 +12,17 @@ def main():
 
     chunks = pipeline.process(
         "data/raw/sample_admit_card.pdf"
-    )
+    )    
+
+    store = FAISSStore()
+
+    store.build(chunks)
 
     print(f"Chunks created: {len(chunks)}")
 
-    search = SemanticSearch(
-        pipeline.generator
-    )
+    search = SemanticSearch(pipeline.generator,store)
 
-    results = search.search(
-        "Where is the exam centre?",
-        chunks,
-        top_k=3
-    )
+    results = search.search("What is the exam date?",top_k=3)
 
     print("\nSearch Results\n")
 
