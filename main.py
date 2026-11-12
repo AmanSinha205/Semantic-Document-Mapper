@@ -20,7 +20,7 @@ def main():
 
     search = SemanticSearch(pipeline.generator,store)
 
-    results = search.search("Who is Aman?",top_k=3)
+    results = search.search("What is the exam date?",top_k=3)
 
     print("\nSearch Results\n")
 
