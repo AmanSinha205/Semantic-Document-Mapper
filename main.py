@@ -10,9 +10,7 @@ def main():
 
     pipeline = DocumentPipeline()
 
-    chunks = pipeline.process(
-        "data/raw/sample_admit_card.pdf"
-    )    
+    chunks = pipeline.process_directory("data/raw")    
 
     store = FAISSStore()
 
@@ -22,11 +20,12 @@ def main():
 
     search = SemanticSearch(pipeline.generator,store)
 
-    results = search.search("What is the exam date?",top_k=3)
+    results = search.search("Who is Aman?",top_k=3)
 
     print("\nSearch Results\n")
 
     for chunk in results:
+        print(f"File : {chunk.filename}")
         print(f"Chunk {chunk.chunk_id}")
         print(f"Page {chunk.page_number}")
         print(chunk.text)

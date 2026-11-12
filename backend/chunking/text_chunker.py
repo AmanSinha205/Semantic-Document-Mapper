@@ -26,6 +26,7 @@ class TextChunker:
                     chunks.append(
                         Chunk(
                             chunk_id=chunk_id,
+                            filename=document.filename,
                             page_number=page.page_number,
                             text=chunk_text
                         )
