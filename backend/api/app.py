@@ -50,6 +50,11 @@ def index_documents():
 
     store.build(chunks)
 
+    store.save(
+        "data/index/faiss.index",
+        "data/index/chunks.json"
+    )
+
     return {
         "chunks_indexed": len(chunks)
     }
