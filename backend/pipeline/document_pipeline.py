@@ -3,6 +3,7 @@ from backend.preprocessing.document_cleaner import DocumentCleaner
 from backend.chunking.text_chunker import TextChunker
 from backend.embeddings.embedding_generator import EmbeddingGenerator
 from pathlib import Path
+from backend.config.settings import (CHUNK_SIZE,CHUNK_OVERLAP)
 
 
 class DocumentPipeline:
@@ -11,8 +12,8 @@ class DocumentPipeline:
         self.reader = PDFReader()
         self.cleaner = DocumentCleaner()
         self.chunker = TextChunker(
-            chunk_size=10,
-            overlap=2
+            chunk_size=CHUNK_SIZE,
+            overlap=CHUNK_OVERLAP
         )
         self.generator = EmbeddingGenerator()
 

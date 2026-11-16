@@ -1,11 +1,12 @@
 from sentence_transformers import SentenceTransformer
+from backend.config.settings import EMBEDDING_MODEL
 
 
 class EmbeddingGenerator:
 
     def __init__(self):
         self.model = SentenceTransformer(
-            "all-MiniLM-L6-v2"
+            EMBEDDING_MODEL
         )
 
     def generate(self, text: str) -> list[float]:

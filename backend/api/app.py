@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 
-from backend.api.services import search, pipeline, store
+from backend.api.services import (search,pipeline,store,rag)
+from backend.config.settings import TOP_K
 
 
 app = FastAPI(
@@ -28,7 +29,7 @@ def semantic_search(query: str):
 
     results = search.search(
         query,
-        top_k=3
+        top_k=TOP_K
     )
 
     return [
@@ -57,4 +58,20 @@ def index_documents():
 
     return {
         "chunks_indexed": len(chunks)
+    }
+
+@app.get("/ask")
+def ask(query: str):
+
+    answer, chunks = rag.ask(query)
+
+    return {
+        "answer": answer,
+        "sources": [
+            {
+                "file": chunk.filename,
+                "page": chunk.page_number
+            }
+            for chunk in chunks
+        ]
     }
